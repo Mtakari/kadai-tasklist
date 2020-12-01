@@ -19,7 +19,7 @@ class TasksController extends Controller
         
         return view("tasks.index",[
             "tasks"=>$tasks,
-            ]);
+        ]);
     }
 
     /**
@@ -30,9 +30,9 @@ class TasksController extends Controller
     public function create()
     {
         $task = new Task;
-         return view("tasks.create",[
-            "task"=>$task,
-             ]);
+        return view("tasks.create",[
+            "tasks"=>$task,
+        ]);
          
     }
 
@@ -44,7 +44,7 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        $task = new task;
+        $task = new Task;
         $task->content=$request->content;
         $task->save();
         
@@ -62,8 +62,8 @@ class TasksController extends Controller
         $task=Task::findOrFail($id);
         
         return view("tasks.show",[
-            "task"=>$task,
-            ]);
+            "tasks"=>$task,
+        ]);
     }
 
     /**
@@ -77,8 +77,8 @@ class TasksController extends Controller
         $task=Task::findOrFail($id);
         
         return view("tasks.edit",[
-            "task"=>$task,
-            ]);
+            "tasks"=>$task,
+        ]);
     }
 
     /**
@@ -90,11 +90,11 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $task=Task::findOrFail($id);
-         $task->content =$request->content;
-         $task->save();
+        $task=Task::findOrFail($id);
+        $task->content =$request->content;
+        $task->save();
          
-         return redirect('/');
+        return redirect('/');
     }
 
     /**
@@ -108,6 +108,6 @@ class TasksController extends Controller
         $task=Task::findOrFail($id);
         $task->delete();
         
-         return redirect('/');
+        return redirect('/');
     }
 }
